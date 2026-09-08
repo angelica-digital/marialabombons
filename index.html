@@ -58,8 +58,8 @@
     position:fixed;
     top:0;left:0;right:0;
     z-index:1000;
-    padding:10px 0;
-    background:rgba(11, 7, 16, 0.9);
+    padding:14px 0;
+    background:rgba(11, 7, 16, 0.85);
     backdrop-filter:blur(20px);
     border-bottom:1px solid rgba(236, 72, 153, 0.2);
     transition:all .3s ease;
@@ -70,7 +70,6 @@
     align-items:center;
     gap:20px;
   }
-  /* LOGO ADAPTABLE (Grande en PC, compacta y limpia en móvil) */
   .logo-img {
     height: 100px;
     width: auto;
@@ -271,7 +270,7 @@
     margin-bottom:16px;
   }
 
-  /* ============== MEDIA KIT (PAQUETES) ============== */
+  /* ============== MEDIA KIT (PAQUETES - RESPONSIVE ROBUSTO) ============== */
   .packages-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(310px, 1fr));
@@ -281,7 +280,8 @@
     background:linear-gradient(160deg, rgba(21, 16, 31, 0.95), rgba(11, 7, 16, 0.9));
     border:1px solid rgba(236, 72, 153, 0.25);
     border-radius:24px;
-    padding: 50px 32px 40px 32px;
+    /* Padding superior generoso de 60px para que el badge "MÁS POPULAR" nunca toque el título en ningún dispositivo */
+    padding: 60px 28px 36px 28px;
     display:flex;
     flex-direction:column;
     position:relative;
@@ -300,37 +300,38 @@
   }
   .package-badge{
     position:absolute;
-    top:16px;
-    right:20px;
+    top:20px;
+    right:24px;
     background:rgba(245, 158, 11, 0.15);
     border:1px solid var(--gold);
     color:var(--gold);
-    font-size:.75rem;
+    font-size:.7rem;
     font-weight:700;
-    padding:6px 14px;
+    padding:5px 12px;
     border-radius:20px;
     text-transform:uppercase;
     z-index:2;
   }
   .package-title{
-    font-size:1.4rem;
+    font-size:1.35rem;
     color:#fff;
     margin-bottom:12px;
     font-family:'Plus Jakarta Sans',sans-serif;
     font-weight:800;
+    line-height: 1.3;
   }
   .package-price{
     font-family:'Playfair Display',serif;
-    font-size:2.4rem;
+    font-size:2.3rem;
     color:var(--gold);
     font-weight:900;
-    margin-bottom:20px;
+    margin-bottom:16px;
   }
   .package-desc{
     font-size:.95rem;
-    margin-bottom:30px;
+    margin-bottom:24px;
     flex-grow:1;
-    line-height:1.7;
+    line-height:1.6;
   }
   .package-card .btn{width:100%}
 
@@ -534,9 +535,9 @@
     100%{box-shadow:0 10px 30px rgba(16,185,129,0.5),0 0 0 0 rgba(16,185,129,0)}
   }
 
-  /* ============== RESPONSIVO OPTIMIZADO (MÓVIL Y PC) ============== */
+  /* ============== RESPONSIVO MÓVIL Y COMPUTADORA ============== */
   @media (max-width: 900px){
-    .hero{padding: 130px 0 60px;} /* Reducido para celular para que no quede espacio muerto */
+    .hero{padding: 130px 0 60px;}
     .hero-grid{grid-template-columns:1fr;gap:40px;text-align:center}
     .hero-buttons{justify-content:center}
     .hero p.lead{margin-inline:auto}
@@ -545,13 +546,8 @@
   }
 
   @media (max-width: 768px){
-    /* Logo compacta y estilizada en móvil para que no choque con el menú */
-    .logo-img {
-      height: 55px; 
-    }
-    .header {
-      padding: 8px 0;
-    }
+    .logo-img { height: 50px; }
+    .header { padding: 8px 0; }
     .menu{
       position:fixed;
       top:0;right:-100%;
@@ -570,9 +566,12 @@
     .hamburger{display:block;z-index:1001}
     .header-cta{display:none}
     
-    .hero h1 { font-size: 2.2rem; }
-    .section-header h2 { font-size: 1.8rem; }
-    .package-card { padding: 45px 20px 30px 20px; }
+    .hero h1 { font-size: 2.1rem; }
+    .section-header h2 { font-size: 1.7rem; }
+    
+    /* Asegurar espacio perfecto en móvil para las tarjetas */
+    .package-card { padding: 65px 20px 30px 20px; }
+    .package-badge { top: 18px; right: 18px; }
   }
 </style>
 </head>
@@ -676,7 +675,7 @@
         </a>
       </article>
 
-      <!-- PAQUETE 2 (DESTACADO) -->
+      <!-- PAQUETE 2 (DESTACADO CON ESPACIO MÓVIL CORREGIDO) -->
       <article class="package-card featured">
         <span class="package-badge">Más Popular</span>
         <h3 class="package-title">Paquete 2: Publicación en el Feed</h3>
