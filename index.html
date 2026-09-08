@@ -58,7 +58,7 @@
     position:fixed;
     top:0;left:0;right:0;
     z-index:1000;
-    padding:16px 0;
+    padding:12px 0;
     background:rgba(11, 7, 16, 0.85);
     backdrop-filter:blur(20px);
     border-bottom:1px solid rgba(236, 72, 153, 0.2);
@@ -70,17 +70,13 @@
     align-items:center;
     gap:20px;
   }
-  .logo{
-    font-family:'Playfair Display',serif;
-    font-size:1.8rem;
-    font-weight:900;
-    font-style:italic;
-    background:linear-gradient(135deg,#FCE7F3,#EC4899,#F59E0B);
-    -webkit-background-clip:text;
-    background-clip:text;
-    -webkit-text-fill-color:transparent;
-    letter-spacing:.5px;
+  /* Estilo para la Logo en el Header */
+  .logo-img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
   }
+
   .menu{display:flex;gap:32px;align-items:center}
   .menu a{
     color:var(--text-muted);
@@ -427,7 +423,7 @@
   .faq-answer-inner { padding: 0 24px 22px; font-size: 0.95rem; color: var(--text-muted); }
   .faq-item.active .faq-answer { max-height: 300px; }
 
-  /* ============== CARROUSEL PREMIUM DE TRABAJOS (CORRECCIÓN DE CORTE INFERIOR) ============== */
+  /* ============== CARROUSEL PREMIUM DE TRABAJOS (EFECTO GLOW INTERNO SIN CORTES) ============== */
   .carousel-section{
     background:rgba(21, 16, 31, 0.4);
     border-top:1px solid rgba(236, 72, 153, 0.15);
@@ -444,8 +440,7 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    /* Espacio superior e inferior generoso (45px abajo) para que la sombra en hover no tope con ningún corte */
-    padding: 15px 15px 45px 15px;
+    padding: 20px 15px 30px 15px;
     scrollbar-width: none;
   }
   .carousel-track::-webkit-scrollbar{display:none}
@@ -459,13 +454,13 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
   }
+  /* En lugar de sombras externas que chocan con el scroll, usamos un borde brillante y un zoom elegante */
   .carousel-item:hover{
     border-color: var(--pink-vibrant);
     transform: translateY(-6px);
-    /* Sombra equilibrada y redonda sin cortes rectos abajo */
-    box-shadow: 0 16px 40px rgba(236, 72, 153, 0.35);
+    box-shadow: inset 0 0 20px rgba(236, 72, 153, 0.25), 0 10px 30px rgba(0, 0, 0, 0.8);
   }
   .work-tag{
     display:inline-block;
@@ -496,14 +491,11 @@
     padding:60px 0 30px;
     text-align:center;
   }
-  .footer-logo{
-    font-family:'Playfair Display',serif;
-    font-size:2rem;
-    font-weight:900;
-    font-style:italic;
-    color:#fff;
-    margin-bottom:16px;
-    display:inline-block;
+  .footer-logo {
+    height: 55px;
+    width: auto;
+    object-fit: contain;
+    margin: 0 auto 16px auto;
   }
   .footer p{font-size:.9rem;color:#9CA3AF;margin-bottom:24px}
   .agency-credit{
@@ -571,7 +563,11 @@
 <header class="header" id="header">
   <div class="container">
     <nav class="nav">
-      <a href="#" class="logo">La Bombons</a>
+      <!-- LOGO SUSTITUIDA EN EL HEADER -->
+      <a href="#" class="logo-link">
+        <img src="logomarialabombons.png" alt="La Bombons" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span class="logo" style="display:none;">La Bombons</span>
+      </a>
       <ul class="menu" id="menu">
         <li><a href="#servicios" onclick="closeMenu()">Media Kit</a></li>
         <li><a href="#experiencia" onclick="closeMenu()">Trayectoria</a></li>
@@ -876,7 +872,9 @@
 <!-- ============== FOOTER ============== -->
 <footer class="footer">
   <div class="container">
-    <span class="footer-logo">La Bombons</span>
+    <!-- LOGO SUSTITUIDA EN EL FOOTER -->
+    <img src="logomarialabombons.png" alt="La Bombons" class="footer-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+    <span class="footer-logo" style="display:none;">La Bombons</span>
     <p>Creadora de contenido, locutora y figura pública líder en el Quindío.</p>
     <div style="display:flex;justify-content:center;gap:16px;margin-bottom:24px">
       <a href="https://instagram.com/marialabombons" target="_blank" style="color:#fff;font-size:1.2rem"><i class="fa-brands fa-instagram"></i></a>
@@ -891,7 +889,7 @@
 <!-- ============== WHATSAPP FLOTANTE ============== -->
 <a href="https://wa.me/573204869934?text=Hola%20La%20Bombons,%20quiero%20contratar%20tus%20servicios" target="_blank" rel="noopener" class="float-wa" aria-label="WhatsApp">
   <i class="fa-brands fa-whatsapp"></i>
-</a >
+</a>
 
 <!-- ============== SCRIPTS ============== -->
 <script>
