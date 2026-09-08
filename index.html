@@ -53,7 +53,7 @@
   ul{list-style:none}
   .container{width:min(1280px,92%);margin-inline:auto}
 
-  /* ============== HEADER (YA NO ESTÁ FIJO) ============== */
+  /* ============== HEADER (ESTÁTICO / NO FIJO) ============== */
   .header{
     position:absolute;
     top:0;left:0;right:0;
@@ -68,7 +68,6 @@
     align-items:center;
     gap:20px;
   }
-  /* LOGO ADAPTABLE */
   .logo-img {
     height: 95px;
     width: auto;
@@ -428,7 +427,7 @@
   .faq-answer-inner { padding: 0 24px 22px; font-size: 0.95rem; color: var(--text-muted); }
   .faq-item.active .faq-answer { max-height: 300px; }
 
-  /* ============== CAROUSEL PREMIUM DE TRABAJOS ============== */
+  /* ============== CAROUSEL PREMIUM DE TRABAJOS (8 CARDS FLUIDOS) ============== */
   .carousel-section{
     background:rgba(21, 16, 31, 0.4);
     border-top:1px solid rgba(236, 72, 153, 0.15);
@@ -544,8 +543,7 @@
   }
 
   @media (max-width: 768px){
-    /* Logo compacta y perfectamente proporcionada en celular */
-    .logo-img { height: 50px; }
+    .logo-img { height: 75px; }
     .header { padding: 12px 0; }
     .menu{
       position:fixed;
@@ -737,7 +735,7 @@
   </div>
 </section>
 
-<!-- ============== CAROUSEL PREMIUM DE TRABAJOS ============== -->
+<!-- ============== CAROUSEL PREMIUM DE TRAYECTORIA (8 CARDS AMPLIADOS) ============== -->
 <section class="carousel-section" id="experiencia">
   <div class="container" style="margin-bottom:30px">
     <div class="section-header" style="margin-bottom:30px">
@@ -778,6 +776,24 @@
         <span class="work-tag">Gastronomía Local</span>
         <h3>Desafío Burger & Asados</h3>
         <p>Cubrimiento de rutas gastronómicas, festivales de hamburguesas y recomendaciones de platos fuertes.</p>
+      </div>
+
+      <div class="carousel-item">
+        <span class="work-tag">Moda & Estilo</span>
+        <h3>Boutique Vioari</h3>
+        <p>Lanzamientos de colección, sesiones fotográficas de marca personal y unboxings interactivos en historias.</p>
+      </div>
+
+      <div class="carousel-item">
+        <span class="work-tag">Bienestar & Cuidado</span>
+        <h3>Odor Zero Piercing</h3>
+        <p>Estrategias de educación de producto, demostraciones en vivo y posicionamiento de marca especializada.</p>
+      </div>
+
+      <div class="carousel-item">
+        <span class="work-tag">Eventos & Festivales</span>
+        <h3>Feria de Armenia</h3>
+        <p>Conducción de tarimas principales, cubrimiento especial para marcas patrocinadoras y entrevistas en directo.</p>
       </div>
 
     </div>
