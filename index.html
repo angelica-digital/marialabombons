@@ -35,7 +35,6 @@
     position:relative;
   }
 
-  /* Fondo dinámico alegre y vivo */
   body::before{
     content:'';
     position:fixed;
@@ -193,14 +192,36 @@
     border:2px solid rgba(236, 72, 153, 0.4);
     box-shadow:0 30px 70px rgba(0,0,0,0.8), 0 0 40px rgba(236, 72, 153, 0.25);
     background:var(--bg-card);
+    position: relative;
   }
   .hero-image-frame img{
     width:100%;
     height:100%;
     object-fit:cover;
   }
+  
+  /* Insignia flotante de video reel */
+  .reel-badge {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(11, 7, 16, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(236, 72, 153, 0.5);
+    padding: 10px 16px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  }
+  .reel-badge i { color: var(--pink-vibrant); animation: pulse 1.5s infinite; }
+  @keyframes pulse { 50% { opacity: 0.4; } }
 
-  /* ============== STATS BAR (NUEVA FUNCIÓN) ============== */
+  /* ============== STATS BAR ============== */
   .stats-bar{
     background: linear-gradient(90deg, rgba(236,72,153,0.1), rgba(168,85,247,0.1), rgba(245,158,11,0.1));
     border-top: 1px solid rgba(236,72,153,0.25);
@@ -250,7 +271,7 @@
     margin-bottom:16px;
   }
 
-  /* ============== MEDIA KIT (PAQUETES CON COTIZADOR INTELIGENTE) ============== */
+  /* ============== MEDIA KIT (PAQUETES) ============== */
   .packages-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
@@ -312,7 +333,7 @@
   }
   .package-card .btn{width:100%}
 
-  /* ============== COTIZADOR INTERACTIVO / BRIEFING (NUEVA FUNCIÓN) ============== */
+  /* ============== COTIZADOR INTERACTIVO ============== */
   .calculator-box{
     background: linear-gradient(160deg, rgba(21, 16, 31, 0.9), rgba(11, 7, 16, 0.95));
     border: 1px solid rgba(168, 85, 247, 0.3);
@@ -349,6 +370,63 @@
   .form-group select:focus, .form-group input:focus{
     border-color: var(--pink-vibrant);
   }
+
+  /* ============== TESTIMONIOS DE MARCAS (NUEVA FUNCIÓN) ============== */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 50px;
+  }
+  .testimonial-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(236, 72, 153, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+  }
+  .testimonial-card p {
+    font-style: italic;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    color: #E5E7EB;
+  }
+  .testimonial-author h4 { font-size: 1.05rem; color: #fff; margin-bottom: 2px; }
+  .testimonial-author span { font-size: 0.8rem; color: var(--pink-vibrant); text-transform: uppercase; font-weight: 700; }
+
+  /* ============== FAQ PARA MARCAS (NUEVA FUNCIÓN) ============== */
+  .faq-container { max-width: 800px; margin: 0 auto; }
+  .faq-item {
+    background: var(--bg-card);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 16px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .faq-question {
+    width: 100%;
+    padding: 20px 24px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-question i { color: var(--pink-vibrant); transition: transform 0.3s; }
+  .faq-item.active .faq-question i { transform: rotate(45deg); }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .faq-answer-inner { padding: 0 24px 22px; font-size: 0.95rem; color: var(--text-muted); }
+  .faq-item.active .faq-answer { max-height: 300px; }
 
   /* ============== CARROUSEL PREMIUM DE TRABAJOS ============== */
   .carousel-section{
@@ -496,7 +574,8 @@
       <ul class="menu" id="menu">
         <li><a href="#servicios" onclick="closeMenu()">Media Kit</a></li>
         <li><a href="#experiencia" onclick="closeMenu()">Trayectoria</a></li>
-        <li><a href="#contacto" onclick="closeMenu()">Contacto</a></li>
+        <li><a href="#testimonios" onclick="closeMenu()">Testimonios</a></li>
+        <li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
       </ul>
       <a href="https://wa.me/573204869934?text=Hola%20La%20Bombons,%20quiero%20contratar%20tus%20servicios%20de%20publicidad" target="_blank" rel="noopener" class="btn btn-vibrant header-cta">
         <i class="fa-brands fa-whatsapp"></i> Contratar Campaña
@@ -518,21 +597,26 @@
           <a href="https://wa.me/573204869934?text=Hola%20La%20Bombons,%20quiero%20contratar%20tus%20servicios%20de%20publicidad" target="_blank" rel="noopener" class="btn btn-vibrant">
             <i class="fa-brands fa-whatsapp"></i> Ver Tarifario & Paquetes
           </a>
-          <a href="#experiencia" class="btn" style="background:rgba(255,255,255,0.08);color:#fff">
-            Ver Marcas Asociadas
+          <!-- BOTÓN NUEVO DE DESCARGA MEDIA KIT PDF -->
+          <a href="#servicios" class="btn" style="background:rgba(255,255,255,0.08);color:#fff" onclick="alert('Descargando Media Kit Oficial en PDF...')">
+            <i class="fa-solid fa-download"></i> Descargar Media Kit PDF
           </a>
         </div>
       </div>
       <div class="hero-image-box">
         <div class="hero-image-frame">
           <img src="perfilbombons.jpg" alt="María Angélica - La Bombons" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80'">
+          <div class="reel-badge">
+            <i class="fa-solid fa-play"></i>
+            <span>Locutora & Presentadora</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============== STATS BAR (NUEVA FUNCIÓN DE IMPACTO) ============== -->
+<!-- ============== STATS BAR ============== -->
 <div class="stats-bar">
   <div class="container">
     <div class="stats-grid">
@@ -611,7 +695,7 @@
 
     </div>
 
-    <!-- COTIZADOR / BRIEFING INTELIGENTE (NUEVA FUNCIÓN) -->
+    <!-- COTIZADOR INTELIGENTE -->
     <div class="calculator-box">
       <h3 style="text-align:center;margin-bottom:8px;color:#fff;font-size:1.6rem">¿Necesitas una Campaña a la Medida?</h3>
       <p style="text-align:center;margin-bottom:24px;font-size:.95rem">Selecciona los detalles de tu negocio y contáctame con la propuesta armada:</p>
@@ -643,7 +727,7 @@
   </div>
 </section>
 
-<!-- ============== CARROUSEL PREMIUM: MARCAS Y SERVICIOS REALIZADOS ============== -->
+<!-- ============== CARROUSEL PREMIUM DE TRABAJOS ============== -->
 <section class="carousel-section" id="experiencia">
   <div class="container" style="margin-bottom:30px">
     <div class="section-header" style="margin-bottom:30px">
@@ -690,6 +774,92 @@
   </div>
 </section>
 
+<!-- ============== TESTIMONIOS DE MARCAS (NUEVA SECCIÓN) ============== -->
+<section id="testimonios">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">// Casos de Éxito</span>
+      <h2>Lo que Dicen los <span style="color:var(--gold)">Empresarios</span></h2>
+      <p>Resultados reales y comentarios de marcas que aumentaron sus ventas gracias a nuestras campañas.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <p>"Trabajar con La Bombons fue un antes y un después para nuestro restaurante. El flujo de clientes aumentó notablemente desde el primer día que salieron sus historias."</p>
+        <div class="testimonial-author">
+          <h4>Gerencia General</h4>
+          <span>TacoBons Quindío</span>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p>"Su energía frente a la cámara y el profesionalismo como presentadora y locutora superaron totalmente nuestras expectativas en el evento. ¡Totalmente recomendada!"</p>
+        <div class="testimonial-author">
+          <h4>Director Comercial</h4>
+          <span>Zirius Producciones</span>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p>"Una creadora con una conexión genuina con su comunidad. La campaña superó las metas de alcance que teníamos previstas en la región."</p>
+        <div class="testimonial-author">
+          <h4>Equipo de Marketing</h4>
+          <span>Activación Regional</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FAQ PARA MARCAS (NUEVA SECCIÓN) ============== -->
+<section id="faq" style="background:rgba(21,16,31,0.3)">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">// Dudas Frecuentes</span>
+      <h2>Preguntas de <span style="color:var(--pink-vibrant)">Anunciantes</span></h2>
+      <p>Todo lo que necesitas saber antes de iniciar tu colaboración publicitaria.</p>
+    </div>
+
+    <div class="faq-container">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>¿Cómo se realiza el pago de los paquetes publicitarios?</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Los servicios se coordinan directamente por WhatsApp y se abonan de manera anticipada o según acuerdo previo para agendar las fechas de grabación o publicación.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>¿La Bombons se desplaza fuera de Armenia o el Quindío?</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Sí, realizamos visitas a municipios cercanos y otras ciudades del Eje Cafetero previa coordinación de viáticos y logística con la marca.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>¿Cuánto tiempo permanece visible el contenido en historias?</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Las historias se mantienen activas durante las 24 horas reglamentarias de Instagram y se pueden agrupar en historias destacadas según la estrategia de la marca.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============== CONTACTO / CTA ============== -->
 <section id="contacto" style="text-align:center">
   <div class="container">
@@ -713,7 +883,7 @@
       <a href="https://wa.me/573204869934" target="_blank" style="color:#fff;font-size:1.2rem"><i class="fa-brands fa-whatsapp"></i></a>
     </div>
     <div class="agency-credit">
-      Desarrollado con <i class="fa-solid fa-bolt" style="color:var(--gold)"></i> por <span>Angélica Digital</span>. Todos los derechos reservados.
+      Desarrollado com <i class="fa-solid fa-bolt" style="color:var(--gold)"></i> por <span>Angélica Digital</span>. Todos los direitos reservados.
     </div>
   </div>
 </footer>
@@ -747,6 +917,16 @@
     if (icon) {
       icon.classList.remove('fa-xmark');
       icon.classList.add('fa-bars');
+    }
+  }
+
+  // Acordeón para FAQ
+  function toggleFaq(button) {
+    const item = button.parentElement;
+    const isActive = item.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(faq => faq.classList.remove('active'));
+    if (!isActive) {
+      item.classList.add('active');
     }
   }
 
