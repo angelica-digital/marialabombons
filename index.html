@@ -200,7 +200,6 @@
     object-fit:cover;
   }
   
-  /* Insignia flotante de video reel */
   .reel-badge {
     position: absolute;
     bottom: 20px;
@@ -371,7 +370,7 @@
     border-color: var(--pink-vibrant);
   }
 
-  /* ============== TESTIMONIOS DE MARCAS (NUEVA FUNCIÓN) ============== */
+  /* ============== TESTIMONIOS DE MARCAS ============== */
   .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -394,7 +393,7 @@
   .testimonial-author h4 { font-size: 1.05rem; color: #fff; margin-bottom: 2px; }
   .testimonial-author span { font-size: 0.8rem; color: var(--pink-vibrant); text-transform: uppercase; font-weight: 700; }
 
-  /* ============== FAQ PARA MARCAS (NUEVA FUNCIÓN) ============== */
+  /* ============== FAQ PARA MARCAS ============== */
   .faq-container { max-width: 800px; margin: 0 auto; }
   .faq-item {
     background: var(--bg-card);
@@ -428,7 +427,7 @@
   .faq-answer-inner { padding: 0 24px 22px; font-size: 0.95rem; color: var(--text-muted); }
   .faq-item.active .faq-answer { max-height: 300px; }
 
-  /* ============== CARROUSEL PREMIUM DE TRABAJOS ============== */
+  /* ============== CARROUSEL PREMIUM DE TRABAJOS (CORREGIDO SHADOW CUADRADA) ============== */
   .carousel-section{
     background:rgba(21, 16, 31, 0.4);
     border-top:1px solid rgba(236, 72, 153, 0.15);
@@ -445,7 +444,7 @@
     overflow-x:auto;
     scroll-snap-type:x mandatory;
     scroll-behavior:smooth;
-    padding:20px 5px;
+    padding:25px 5px;
     scrollbar-width:none;
   }
   .carousel-track::-webkit-scrollbar{display:none}
@@ -454,7 +453,8 @@
     scroll-snap-align:start;
     background:var(--bg-card);
     border:1px solid rgba(168, 85, 247, 0.2);
-    border-radius:20px;
+    border-radius:20px; /* Bordes redondeados estrictos */
+    overflow:hidden;     /* Evita que cualquier sombra interna o hijo se desborde en cuadrado */
     padding:24px;
     display:flex;
     flex-direction:column;
@@ -462,9 +462,9 @@
     transition:all .3s ease;
   }
   .carousel-item:hover{
-    border-color:var(--purple-vibrant);
-    transform:translateY(-5px);
-    box-shadow:0 15px 35px rgba(168, 85, 247, 0.2);
+    border-color:var(--pink-vibrant);
+    transform:translateY(-6px);
+    box-shadow: 0 15px 35px rgba(236, 72, 153, 0.25); /* Sombra difuminada acorde al border-radius */
   }
   .work-tag{
     display:inline-block;
@@ -597,7 +597,6 @@
           <a href="https://wa.me/573204869934?text=Hola%20La%20Bombons,%20quiero%20contratar%20tus%20servicios%20de%20publicidad" target="_blank" rel="noopener" class="btn btn-vibrant">
             <i class="fa-brands fa-whatsapp"></i> Ver Tarifario & Paquetes
           </a>
-          <!-- BOTÓN NUEVO DE DESCARGA MEDIA KIT PDF -->
           <a href="#servicios" class="btn" style="background:rgba(255,255,255,0.08);color:#fff" onclick="alert('Descargando Media Kit Oficial en PDF...')">
             <i class="fa-solid fa-download"></i> Descargar Media Kit PDF
           </a>
@@ -774,7 +773,7 @@
   </div>
 </section>
 
-<!-- ============== TESTIMONIOS DE MARCAS (NUEVA SECCIÓN) ============== -->
+<!-- ============== TESTIMONIOS DE MARCAS ============== -->
 <section id="testimonios">
   <div class="container">
     <div class="section-header">
@@ -811,7 +810,7 @@
   </div>
 </section>
 
-<!-- ============== FAQ PARA MARCAS (NUEVA SECCIÓN) ============== -->
+<!-- ============== FAQ PARA MARCAS ============== -->
 <section id="faq" style="background:rgba(21,16,31,0.3)">
   <div class="container">
     <div class="section-header">
@@ -883,7 +882,7 @@
       <a href="https://wa.me/573204869934" target="_blank" style="color:#fff;font-size:1.2rem"><i class="fa-brands fa-whatsapp"></i></a>
     </div>
     <div class="agency-credit">
-      Desarrollado com <i class="fa-solid fa-bolt" style="color:var(--gold)"></i> por <span>Angélica Digital</span>. Todos los direitos reservados.
+      Desarrollado con <i class="fa-solid fa-bolt" style="color:var(--gold)"></i> por <span>Angélica Digital</span>. Todos los derechos reservados.
     </div>
   </div>
 </footer>
