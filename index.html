@@ -70,7 +70,6 @@
     align-items:center;
     gap:20px;
   }
-  /* LOGO AMPLIADA A 110px EN EL HEADER */
   .logo-img {
     height: 110px;
     width: auto;
@@ -255,6 +254,7 @@
     text-align:center;
     max-width:750px;
     margin:0 auto 50px;
+    padding: 0 15px;
   }
   .section-tag{
     display:inline-block;
@@ -270,17 +270,18 @@
     margin-bottom:16px;
   }
 
-  /* ============== MEDIA KIT (PAQUETES) ============== */
+  /* ============== MEDIA KIT (PAQUETES - CORRECCIÓN DE ESPACIADO) ============== */
   .packages-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns:repeat(auto-fit, minmax(310px, 1fr));
     gap:30px;
   }
   .package-card{
     background:linear-gradient(160deg, rgba(21, 16, 31, 0.95), rgba(11, 7, 16, 0.9));
     border:1px solid rgba(236, 72, 153, 0.25);
     border-radius:24px;
-    padding:40px 32px;
+    /* Padding superior aumentado a 50px para dar espacio libre al badge "MÁS POPULAR" y evitar que tape el título */
+    padding: 50px 32px 40px 32px;
     display:flex;
     flex-direction:column;
     position:relative;
@@ -299,7 +300,7 @@
   }
   .package-badge{
     position:absolute;
-    top:20px;
+    top:16px;
     right:20px;
     background:rgba(245, 158, 11, 0.15);
     border:1px solid var(--gold);
@@ -309,6 +310,7 @@
     padding:6px 14px;
     border-radius:20px;
     text-transform:uppercase;
+    z-index:2;
   }
   .package-title{
     font-size:1.4rem;
@@ -427,7 +429,7 @@
   .faq-answer-inner { padding: 0 24px 22px; font-size: 0.95rem; color: var(--text-muted); }
   .faq-item.active .faq-answer { max-height: 300px; }
 
-  /* ============== CARROUSEL PREMIUM DE TRABAJOS ============== */
+  /* ============== CAROUSEL PREMIUM DE TRABAJOS ============== */
   .carousel-section{
     background:rgba(21, 16, 31, 0.4);
     border-top:1px solid rgba(236, 72, 153, 0.15);
@@ -494,7 +496,6 @@
     padding:60px 0 30px;
     text-align:center;
   }
-  /* LOGO RESTAURADA Y AMPLIADA EN EL FOOTER */
   .footer-logo {
     height: 90px;
     width: auto;
@@ -533,14 +534,17 @@
     100%{box-shadow:0 10px 30px rgba(16,185,129,0.5),0 0 0 0 rgba(16,185,129,0)}
   }
 
-  /* ============== RESPONSIVO ============== */
-  @media (max-width:900px){
+  /* ============== RESPONSIVO OPTIMIZADO (MÓVIL Y PC) ============== */
+  @media (max-width: 900px){
+    .hero{padding: 140px 0 60px;}
     .hero-grid{grid-template-columns:1fr;gap:40px;text-align:center}
     .hero-buttons{justify-content:center}
     .hero p.lead{margin-inline:auto}
     .stats-grid{grid-template-columns: 1fr; gap: 15px;}
+    .calculator-box { padding: 25px 20px; }
   }
-  @media (max-width:768px){
+
+  @media (max-width: 768px){
     .menu{
       position:fixed;
       top:0;right:-100%;
@@ -558,6 +562,11 @@
     .menu.open{right:0}
     .hamburger{display:block;z-index:1001}
     .header-cta{display:none}
+    
+    /* Ajustes para móviles pequeños */
+    .hero h1 { font-size: 2.2rem; }
+    .section-header h2 { font-size: 1.8rem; }
+    .package-card { padding: 45px 20px 30px 20px; }
   }
 </style>
 </head>
@@ -567,7 +576,6 @@
 <header class="header" id="header">
   <div class="container">
     <nav class="nav">
-      <!-- LOGO AMPLIADA EN EL HEADER -->
       <a href="#" class="logo-link">
         <img src="logomarialabombons.png" alt="La Bombons" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
         <span class="logo" style="display:none;">La Bombons</span>
@@ -662,7 +670,7 @@
         </a>
       </article>
 
-      <!-- PAQUETE 2 (DESTACADO) -->
+      <!-- PAQUETE 2 (DESTACADO CON ESPACIO CORREGIDO PARA EL BADGE) -->
       <article class="package-card featured">
         <span class="package-badge">Más Popular</span>
         <h3 class="package-title">Paquete 2: Publicación en el Feed</h3>
@@ -727,7 +735,7 @@
   </div>
 </section>
 
-<!-- ============== CARROUSEL PREMIUM DE TRABAJOS ============== -->
+<!-- ============== CAROUSEL PREMIUM DE TRABAJOS ============== -->
 <section class="carousel-section" id="experiencia">
   <div class="container" style="margin-bottom:30px">
     <div class="section-header" style="margin-bottom:30px">
@@ -876,7 +884,6 @@
 <!-- ============== FOOTER ============== -->
 <footer class="footer">
   <div class="container">
-    <!-- LOGO RESTAURADA Y AMPLIADA EN EL FOOTER -->
     <img src="logomarialabombons.png" alt="La Bombons" class="footer-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
     <span class="footer-logo" style="display:none;">La Bombons</span>
     <p>Creadora de contenido, locutora y figura pública líder en el Quindío.</p>
