@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meraki Restaurant · Salento, Quindío</title>
+  <meta name="description" content="Local & Cosmo Experiences en Salento, Quindío. Cocina de autor, coctelería y tradición.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            meraki: {
+              bg: '#FDF8F5',
+              card: '#FFFFFF',
+              border: '#F0E5DE',
+              primary: '#A44A27',
+              dark: '#2B1E1A',
+              muted: '#6E5D57',
+              accent: '#C86B47',
+            }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #FDF8F5;
+      color: #2B1E1A;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="selection:bg-[#A44A27] selection:text-white">
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-40 bg-[#FDF8F5]/95 backdrop-blur-md border-b border-[#F0E5DE]">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="font-serif text-2xl tracking-[0.2em] text-[#A44A27] font-bold">MERAKI</span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <!-- Language Switcher -->
+        <div class="flex bg-[#F0E5DE]/70 rounded-full p-1 text-xs font-semibold">
+          <button onclick="setLanguage('es')" id="btn-es" class="px-2.5 py-1 rounded-full uppercase transition-all bg-[#A44A27] text-white shadow-sm">ES</button>
+          <button onclick="setLanguage('en')" id="btn-en" class="px-2.5 py-1 rounded-full uppercase transition-all text-[#6E5D57] hover:text-[#2B1E1A]">EN</button>
+          <button onclick="setLanguage('pt')" id="btn-pt" class="px-2.5 py-1 rounded-full uppercase transition-all text-[#6E5D57] hover:text-[#2B1E1A]">PT</button>
+        </div>
+
+        <a id="nav-reserve-btn" href="https://wa.me/573222858658" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex bg-[#A44A27] hover:bg-[#C86B47] text-white px-4 py-2 rounded-full text-xs font-medium tracking-wide transition-colors">
+          Reservar Mesa
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="px-4 pt-12 pb-8 text-center max-w-3xl mx-auto">
+    <span id="hero-badge" class="inline-block text-[11px] uppercase tracking-[0.15em] text-[#A44A27] font-semibold mb-3 px-3 py-1 rounded-full bg-[#A44A27]/10">
+      Salento, Quindío · Experiencia Gastronómica
+    </span>
+    <h1 id="hero-title" class="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#A44A27] tracking-tight font-normal mb-4">
+      Local & Cosmo Experiences
+    </h1>
+    <p id="hero-subtitle" class="text-[#6E5D57] text-base sm:text-lg mb-6 leading-relaxed font-light">
+      Cocina de autor, coctelería y tradición en el corazón de Salento.
+    </p>
+
+    <div class="flex items-center justify-center gap-3">
+      <a id="btn-view-menu" href="#menu" class="bg-[#A44A27] hover:bg-[#C86B47] text-white px-6 py-3 rounded-full text-sm font-medium transition-all shadow-sm">
+        Ver Menú Digital
+      </a>
+      <a id="btn-how-to-get" href="https://maps.google.com/?q=Carrera+3+%235-56+Salento+Quindio" target="_blank" rel="noopener noreferrer" class="border border-[#F0E5DE] bg-white/60 hover:bg-[#F0E5DE]/40 text-[#2B1E1A] px-6 py-3 rounded-full text-sm font-medium transition-colors">
+        Abrir en Google Maps
+      </a>
+    </div>
+  </section>
+
+  <!-- STICKY MENU NAVIGATION & SEARCH -->
+  <section id="menu" class="sticky top-[57px] z-30 bg-[#FDF8F5]/95 backdrop-blur-md py-3 border-y border-[#F0E5DE]">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row gap-3 items-center justify-between">
+      <!-- Categories Tabs -->
+      <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 no-scrollbar" id="category-tabs">
+        <button onclick="setCategory('all')" data-cat="all" class="cat-btn whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-medium transition-all bg-[#2B1E1A] text-white shadow-sm">Todo</button>
+        <button onclick="setCategory('entradas')" data-cat="entradas" class="cat-btn whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-medium transition-all bg-white text-[#6E5D57] hover:bg-[#FDF8F5] border border-[#F0E5DE]">Entradas</button>
+        <button onclick="setCategory('fuertes')" data-cat="fuertes" class="cat-btn whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-medium transition-all bg-white text-[#6E5D57] hover:bg-[#FDF8F5] border border-[#F0E5DE]">Platos Fuertes</button>
+        <button onclick="setCategory('cocteles')" data-cat="cocteles" class="cat-btn whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-medium transition-all bg-white text-[#6E5D57] hover:bg-[#FDF8F5] border border-[#F0E5DE]">Coctelería</button>
+        <button onclick="setCategory('bebidas')" data-cat="bebidas" class="cat-btn whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-medium transition-all bg-white text-[#6E5D57] hover:bg-[#FDF8F5] border border-[#F0E5DE]">Bebidas & Café</button>
+      </div>
+
+      <!-- Search Input -->
+      <div class="w-full sm:w-64">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Buscar plato o ingrediente..."
+          oninput="handleSearch(this.value)"
+          class="w-full bg-white border border-[#F0E5DE] rounded-full px-4 py-1.5 text-xs text-[#2B1E1A] placeholder-[#6E5D57]/60 focus:outline-none focus:border-[#A44A27]"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU GRID -->
+  <main class="max-w-6xl mx-auto px-4 py-8">
+    <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Items dynamically populated via JS -->
+    </div>
+  </main>
+
+  <!-- TRAVELER FAQ SECTION -->
+  <section class="bg-white border-t border-[#F0E5DE] py-12 px-4">
+    <div class="max-w-3xl mx-auto">
+      <h2 id="faq-title" class="font-serif text-2xl sm:text-3xl text-[#A44A27] text-center mb-8 font-medium">
+        Información para Viajeros
+      </h2>
+      <div class="space-y-4" id="faq-list">
+        <!-- FAQs populated via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION & FOOTER -->
+  <footer class="bg-[#2B1E1A] text-[#FDF8F5] py-12 px-4">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+      <div>
+        <h3 class="font-serif text-2xl tracking-[0.2em] text-[#FDF8F5] mb-2">MERAKI</h3>
+        <p class="text-xs text-[#F0E5DE]/70 leading-relaxed font-light">
+          Local and Cosmo Experiences · Salento, Quindío.
+        </p>
+      </div>
+
+      <div>
+        <h4 id="footer-loc-title" class="text-sm font-semibold text-white mb-2">Ubicación & Horarios</h4>
+        <p id="footer-loc-address" class="text-xs text-[#F0E5DE]/80 mb-1">Carrera 3 #5-56, Salento, Quindío, Colombia</p>
+        <p id="footer-loc-hours" class="text-xs text-[#F0E5DE]/80 mb-3">Lunes a Domingo: 12:00 PM – 10:00 PM</p>
+        <a
+          href="https://maps.google.com/?q=Carrera+3+%235-56+Salento+Quindio"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-xs text-[#C86B47] hover:underline"
+          id="footer-loc-link"
+        >
+          Abrir en Google Maps →
+        </a>
+      </div>
+
+      <div class="flex flex-col items-center md:items-start justify-center">
+        <a
+          id="footer-whatsapp-btn"
+          href="https://wa.me/573222858658"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-[#A44A27] hover:bg-[#C86B47] text-white px-6 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-colors"
+        >
+          WhatsApp Reservas
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a
+    id="floating-wa"
+    href="https://wa.me/573222858658"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20bd5a] text-white p-3.5 rounded-full shadow-lg transition-transform hover:scale-105"
+    aria-label="WhatsApp"
+  >
+    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
+    </svg>
+  </a>
+
+  <!-- APP LOGIC -->
+  <script>
+    let currentLang = 'es';
+    let currentCategory = 'all';
+    let currentSearch = '';
+
+    const DICTIONARY = {
+      es: {
+        badge: 'Salento, Quindío · Experiencia Gastronómica',
+        heroTitle: 'Local & Cosmo Experiences',
+        heroSubtitle: 'Cocina de autor, coctelería y tradición en el corazón de Salento.',
+        viewMenu: 'Ver Menú Digital',
+        howToGet: 'Abrir en Google Maps',
+        reserve: 'Reservar Mesa',
+        searchPlaceholder: 'Buscar plato o ingrediente...',
+        categories: {
+          all: 'Todo',
+          entradas: 'Entradas',
+          fuertes: 'Platos Fuertes',
+          cocteles: 'Coctelería',
+          bebidas: 'Bebidas & Café'
+        },
+        faqTitle: 'Información para Viajeros',
+        faqs: [
+          { q: '¿Qué métodos de pago aceptan?', a: 'Aceptamos tarjetas internacionales (Visa, Mastercard, Amex), pagos digitales locales (Nequi, Daviplata) y efectivo en Pesos Colombianos (COP).' },
+          { q: '¿Tienen opciones vegetarianas y sin gluten?', a: 'Sí, disponemos de opciones vegetarianas y platos adaptables. Informa a nuestro equipo al ordenar.' },
+          { q: '¿Es necesario reservar con antelación?', a: 'Atendemos por orden de llegada; para grupos grandes recomendamos reservar previamente vía WhatsApp.' },
+          { q: '¿El restaurante es pet-friendly?', a: 'Sí, recibimos con gusto a mascotas educadas en nuestras áreas exteriores y terraza.' }
+        ],
+        locationTitle: 'Ubicación & Horarios',
+        locationText: 'Carrera 3 #5-56, Salento, Quindío, Colombia',
+        hours: 'Lunes a Domingo: 12:00 PM – 10:00 PM',
+        openMap: 'Abrir en Google Maps →',
+        whatsappMsg: '¡Hola! Quiero consultar disponibilidad y hacer una reserva en Meraki Salento.'
+      },
+      en: {
+        badge: 'Salento, Quindío · Dining Experience',
+        heroTitle: 'Local & Cosmo Experiences',
+        heroSubtitle: 'Artisanal cuisine, signature cocktails, and local heritage in Salento.',
+        viewMenu: 'View Digital Menu',
+        howToGet: 'Open in Google Maps',
+        reserve: 'Book a Table',
+        searchPlaceholder: 'Search dish or ingredients...',
+        categories: {
+          all: 'All',
+          entradas: 'Appetizers',
+          fuertes: 'Main Courses',
+          cocteles: 'Cocktails',
+          bebidas: 'Drinks & Coffee'
+        },
+        faqTitle: 'Traveler Information',
+        faqs: [
+          { q: 'What payment methods do you accept?', a: 'We accept international credit cards (Visa, Mastercard, Amex), contactless payments, and cash in Colombian Pesos (COP).' },
+          { q: 'Do you offer vegetarian or gluten-free options?', a: 'Yes, we have dedicated vegetarian selections and customizable plates. Please let our team know when ordering.' },
+          { q: 'Is it necessary to make a reservation?', a: 'Walk-ins are welcome. For large groups, we recommend booking in advance via WhatsApp.' },
+          { q: 'Are you pet-friendly?', a: 'Yes, well-behaved pets are welcome in our open terrace areas.' }
+        ],
+        locationTitle: 'Location & Hours',
+        locationText: 'Carrera 3 #5-56, Salento, Quindio, Colombia',
+        hours: 'Monday to Sunday: 12:00 PM – 10:00 PM',
+        openMap: 'Open in Google Maps →',
+        whatsappMsg: 'Hello! I would like to inquire about table availability and reservations at Meraki Salento.'
+      },
+      pt: {
+        badge: 'Salento, Quindío · Experiência Gastronômica',
+        heroTitle: 'Local & Cosmo Experiences',
+        heroSubtitle: 'Cozinha autoral, coquetelaria e tradição no coração de Salento.',
+        viewMenu: 'Ver Cardápio Digital',
+        howToGet: 'Abrir no Google Maps',
+        reserve: 'Reservar Mesa',
+        searchPlaceholder: 'Buscar prato ou ingrediente...',
+        categories: {
+          all: 'Tudo',
+          entradas: 'Entradas',
+          fuertes: 'Pratos Principais',
+          cocteles: 'Coquetéis',
+          bebidas: 'Bebidas e Café'
+        },
+        faqTitle: 'Informações para Viajantes',
+        faqs: [
+          { q: 'Quais formas de pagamento são aceitas?', a: 'Aceitamos cartões internacionais (Visa, Mastercard, Amex), pagamentos por aproximação e dinheiro em espécie (COP).' },
+          { q: 'Existem opções vegetarianas ou sem glúten?', a: 'Sim, dispomos de opções vegetarianas e pratos adaptáveis. Basta solicitar à nossa equipe.' },
+          { q: 'É necessário fazer reserva com antecedência?', a: 'Atendemos por ordem de chegada; para grupos, recomendamos reservar com antecedência pelo WhatsApp.' },
+          { q: 'O restaurante é pet-friendly?', a: 'Sim, animais de estimação são muito bem-vindos nas áreas externas e varanda.' }
+        ],
+        locationTitle: 'Localização e Horários',
+        locationText: 'Carrera 3 #5-56, Salento, Quindío, Colômbia',
+        hours: 'Segunda a Domingo: 12:00 – 22:00',
+        openMap: 'Abrir no Google Maps →',
+        whatsappMsg: 'Olá! Gostaria de consultar informações e disponibilidade de reserva no Meraki Salento.'
+      }
+    };
+
+    const MENU_ITEMS = [
+      // ENTRADAS
+      { id: '1', cat: 'entradas', price: 20000, pop: true, name: { es: 'Nachos Sencillos', en: 'Classic Nachos', pt: 'Nachos Clássicos' }, desc: { es: 'Totopos de maíz crujientes acompañados de guacamole artesanal fresco y toque cítrico.', en: 'Crispy corn tortilla chips served with fresh house guacamole and citrus notes.', pt: 'Tortilhas de milho crocantes servidas com guacamole artesanal fresco e toque cítrico.' } },
+      { id: '2', cat: 'entradas', price: 35000, pop: true, name: { es: 'Nachos con Birria', en: 'Birria Nachos', pt: 'Nachos com Birria' }, desc: { es: 'Totopos con queso fundido, carne birria desmechada en cocción lenta y guacamole.', en: 'Tortilla chips topped with melted cheese, slow-cooked shredded birria beef, and guacamole.', pt: 'Tortilhas com queijo derretido, carne de birria desfiada em fogo lento e guacamole.' } },
+      { id: '3', cat: 'entradas', price: 40000, pop: false, name: { es: 'Ceviche Meraki', en: 'Meraki Style Ceviche', pt: 'Ceviche Meraki' }, desc: { es: 'Crocante de chicharrón y trucha marinados al limón con cebolla morada y ají suave.', en: 'Crispy pork belly and local trout marinated in lime, red onion, cilantro, and mild pepper.', pt: 'Crocante de torresmo e truta marinados no limão com cebola roxa e pimenta suave.' } },
+      { id: '4', cat: 'entradas', price: 32000, pop: false, name: { es: 'Papas Rústicas con Birria', en: 'Rustic Birria Fries', pt: 'Batatas Rústicas com Birria' }, desc: { es: 'Papas doradas en gajos bañadas en cheddar fundido, birria tierna y crema agria.', en: 'Golden rustic potato wedges topped with melted cheddar, tender beef birria, and sour cream.', pt: 'Batatas rústicas cobertas com queijo cheddar derretido, birria macia e sour cream.' } },
+      { id: '5', cat: 'entradas', price: 18000, pop: false, name: { es: 'Trilogía de Patacones', en: 'Plantain Trio with Hogao', pt: 'Trilogia de Patacões' }, desc: { es: 'Patacones de plátano verde recién hechos servidos con hogao tradicional y guacamole.', en: 'Crispy green plantains served with traditional Colombian hogao sauce and house guacamole.', pt: 'Patacões crocantes com molho hogao tradicional colombiano e guacamole da casa.' } },
+      { id: '6', cat: 'entradas', price: 24000, pop: false, name: { es: 'Falafels Artesanales', en: 'Artisanal Falafel Bites', pt: 'Falafels Artesanais' }, desc: { es: 'Croquetas de garbanzo especiadas, hierbas frescas y salsa tártara de ajo confitado.', en: 'Crispy spiced chickpea fritters with fresh herbs and roasted garlic tahini dip.', pt: 'Bolinhos crocantes de grão-de-bico temperados com ervas finas e molho de alho confitado.' } },
+      { id: '7', cat: 'entradas', price: 22000, pop: false, name: { es: 'Cazuelita de Frijoles Paisas', en: 'Traditional Bean Bowl', pt: 'Caldinho de Feijão Paisa' }, desc: { es: 'Frijoles criollos en cocción lenta con plátano maduro picado y trozos de chicharrón crocante.', en: 'Slow-cooked local red beans with sweet ripe plantain and crispy pork belly bits.', pt: 'Feijão regional cozido lentamente com banana-da-terra madura e pedaços de torresmo.' } },
+      { id: '8', cat: 'entradas', price: 18000, pop: true, name: { es: 'Empanadas de la Casa (3 uds)', en: 'House Empanadas (3 pcs)', pt: 'Empanadas da Casa (3 un)' }, desc: { es: 'Masa de maíz crujiente rellena de carne desmechada sazonada, acompañadas de ají casero.', en: 'Crisp corn pastry stuffed with seasoned shredded beef, served with artisanal salsa.', pt: 'Massa de milho crocante recheada com carne desfiada temperada e molho artesanal.' } },
+      { id: '9', cat: 'entradas', price: 26000, pop: false, name: { es: 'Queso Campesino a la Parrilla', en: 'Grilled Artisan Cheese', pt: 'Queijo Camponês Grelhado' }, desc: { es: 'Queso local dorado a la brasa con miel de panela aromatizada y frutos secos.', en: 'Local cheese grilled on coals topped with infused cane sugar reduction and toasted nuts.', pt: 'Queijo artesanal grelhado na brasa com redução de rapadura e castanhas tostadas.' } },
+      { id: '10', cat: 'entradas', price: 28000, pop: false, name: { es: 'Alitas Glaseadas al Café', en: 'Coffee Glazed Wings', pt: 'Asinhas Glaciadas ao Café' }, desc: { es: 'Alitas crocantes bañadas en salsa BBQ artesanal con reducción de café especial de Salento.', en: 'Crispy wings glazed in house BBQ sauce infused with Salento specialty coffee reduction.', pt: 'Asinhas crocantes com molho barbecue artesanal e redução de café especial de Salento.' } },
+
+      // FUERTES
+      { id: '11', cat: 'fuertes', price: 45000, pop: true, name: { es: 'Trucha Asada Tradicional', en: 'Traditional Grilled Trout', pt: 'Truta Grelhada Tradicional' }, desc: { es: 'Filete fresco de trucha a la plancha, patacón gigante tostado, arroz de coco y ensalada.', en: 'Fresh local trout fillet grilled to perfection, giant plantain, coconut rice, and house salad.', pt: 'Filé fresco de truta grelhado, patacão crocante, arroz de coco e salada da casa.' } },
+      { id: '12', cat: 'fuertes', price: 49000, pop: true, name: { es: 'Trucha al Ajillo Cremoso', en: 'Garlic Cream Trout', pt: 'Truta ao Alho Cremoso' }, desc: { es: 'Trucha de río bañada en salsa cremosa de ajo confitado, vino blanco, perejil y patacón.', en: 'Mountain trout in a rich roasted garlic white wine cream sauce with plantain.', pt: 'Truta fresca banhada em molho cremoso de alho confitado, vinho branco e patacão.' } },
+      { id: '13', cat: 'fuertes', price: 52000, pop: false, name: { es: 'Trucha en Salsa de Champiñones', en: 'Mushroom Sauce Trout', pt: 'Truta com Cogumelos' }, desc: { es: 'Filete de trucha sobre reducción sedosa de champiñones salteados al fuego y queso gratinado.', en: 'Trout fillet served with a creamy sautéed mushroom reduction and melted golden cheese.', pt: 'Filé de truta com redução aveludada de cogumelos salteados e queijo gratinado.' } },
+      { id: '14', cat: 'fuertes', price: 38000, pop: true, name: { es: 'Hamburguesa Meraki Burger', en: 'Meraki Signature Burger', pt: 'Hambúrguer Meraki Special' }, desc: { es: '180g de res premium, queso madurado, tocineta caramelizada, cebolla crispy y papas.', en: '180g premium beef patty, aged cheese, caramelized bacon, crispy onions, and rustic fries.', pt: '180g de carne premium, queijo curado, bacon caramelizado, cebola crispy e batatas.' } },
+      { id: '15', cat: 'fuertes', price: 42000, pop: false, name: { es: 'Birria Monster Burger', en: 'Birria Monster Burger', pt: 'Birria Monster Burger' }, desc: { es: 'Carne artesanal coronada con birria cocinada 8 horas, queso fundido y consomé aparte.', en: 'Handcrafted beef topped with 8-hour braised beef birria, melted cheese, and dipping broth.', pt: 'Hambúrguer coberto com carne de birria cozida por 8 horas e caldo de imersão.' } },
+      { id: '16', cat: 'fuertes', price: 48000, pop: true, name: { es: 'Costillas BBQ en Miel de Panela', en: 'Panela Honey BBQ Ribs', pt: 'Costelinha BBQ com Rapadura' }, desc: { es: 'Costillas de cerdo tiernas glaseadas al carbón con salsa barbacoa de panela y papas rústicas.', en: 'Slow-smoked tender pork ribs caramelized in cane sugar BBQ glaze, served with potato wedges.', pt: 'Costelinha de porco macia defumada na brasa com glacê agridoce e batatas rústicas.' } },
+      { id: '17', cat: 'fuertes', price: 54000, pop: false, name: { es: 'Punta de Anca Angus (300g)', en: 'Grilled Angus Rump Steak (300g)', pt: 'Picanha Angus na Brasa (300g)' }, desc: { es: 'Corte jugoso a la brasa con chimichurri de la casa, papa criolla salteada y ensalada fresca.', en: 'Charcoal grilled steak served with signature chimichurri, roasted baby potatoes, and salad.', pt: 'Corte nobre grelhado na brasa com chimichurri da casa, batatinhas salteadas e salada.' } },
+      { id: '18', cat: 'fuertes', price: 36000, pop: false, name: { es: 'Pechuga Campesina a la Plancha', en: 'Herb Grilled Chicken Breast', pt: 'Peito de Frango às Ervas' }, desc: { es: 'Filete de pechuga marinada en romero y cítricos, servido con arroz blanco y puré rústico.', en: 'Tender chicken breast marinated in fresh rosemary and citrus, served with rice and mash.', pt: 'Peito de frango marinado em alecrim e notas cítricas, servido com arroz e purê rústico.' } },
+      { id: '19', cat: 'fuertes', price: 34000, pop: false, name: { es: 'Bowl Silvestre Veggie', en: 'Wild Harvest Veggie Bowl', pt: 'Bowl Silvestre Veggie' }, desc: { es: 'Quinoa real, falafels crocantes, aguacate Hass, vegetales asados y aderezo tahini-limón.', en: 'Royal quinoa, crunchy falafel, ripe avocado, fire-roasted vegetables, and lemon tahini.', pt: 'Quinoa, falafels crocantes, abacate fresco, legumes grelhados e molho de tahine com limão.' } },
+      { id: '20', cat: 'fuertes', price: 37000, pop: false, name: { es: 'Pasta Carbonara con Tocineta', en: 'Smoked Bacon Carbonara Pasta', pt: 'Massa Carbonara com Bacon' }, desc: { es: 'Fettuccine al dente en salsa sedosa de yemas, tocineta crocante y queso parmesano.', en: 'Fettuccine pasta tossed in a rich egg yolk cream sauce, crispy cured bacon, and parmesan.', pt: 'Fettuccine al dente em emulsão clássica de gemas, bacon crocante e queijo parmesão.' } },
+
+      // COCTELES
+      { id: '21', cat: 'cocteles', price: 32000, pop: true, name: { es: 'Meraki Botanic Gin', en: 'Meraki Botanic Gin Tonic', pt: 'Meraki Botanic Gin' }, desc: { es: 'Ginebra con botánicos locales, tónica premium, frutos rojos del bosque y romero.', en: 'Artisan gin infused with native botanicals, premium tonic, wild forest berries, and rosemary.', pt: 'Gin com botânicos locais, água tônica premium, frutas vermelhas e alecrim.' } },
+      { id: '22', cat: 'cocteles', price: 28000, pop: true, name: { es: 'Mojito de Maracuyá Silvestre', en: 'Passion Fruit Mojito', pt: 'Mojito de Maracujá' }, desc: { es: 'Ron blanco añejo, hierbabuena macerada, zumo de maracuyá natural y soda.', en: 'Aged white rum, freshly muddled garden mint, natural passion fruit pulp, and soda.', pt: 'Rum branco, hortelã fresca macerada, maracujá natural e água com gás.' } },
+      { id: '23', cat: 'cocteles', price: 34000, pop: false, name: { es: 'Margarita Salento de Fresa', en: 'Salento Strawberry Margarita', pt: 'Margarita de Morango Salento' }, desc: { es: 'Tequila reposado, triple sec, pulpa de fresa natural y escarchado de sal volcánica.', en: 'Reposado tequila, triple sec liqueur, fresh crushed strawberries, and volcanic salt rim.', pt: 'Tequila reposado, triple sec, morangos frescos batidos e borda de sal vulcânico.' } },
+      { id: '24', cat: 'cocteles', price: 27000, pop: true, name: { es: 'Carajillo de Café Especial', en: 'Specialty Coffee Carajillo', pt: 'Carajillo de Café Especial' }, desc: { es: 'Licor 43 batido en frío con espresso doble de origen Salento y perfume de canela.', en: 'Licor 43 shaken over ice with double origin Salento espresso and cinnamon zest.', pt: 'Licor 43 batido no gelo com espresso duplo de origem Salento e toque de canela.' } },
+      { id: '25', cat: 'cocteles', price: 26000, pop: false, name: { es: 'Caipiriña Clásica de Lima', en: 'Classic Lime Caipirinha', pt: 'Caipirinha Clássica de Limão' }, desc: { es: 'Cachaça brasileña tradicional, lima macerada con azúcar morena y hielo picado.', en: 'Brazilian cachaça spirit, fresh limes crushed with raw cane sugar, and crushed ice.', pt: 'Cachaça brasileira tradicional, limões macerados com açúcar e muito gelo.' } },
+      { id: '26', cat: 'cocteles', price: 33000, pop: false, name: { es: 'Aperol Spritz Meraki', en: 'Meraki Aperol Spritz', pt: 'Aperol Spritz Meraki' }, desc: { es: 'Aperol italiano, vino espumoso Prosecco, toque de soda mineral y naranja fresca.', en: 'Italian Aperol, crisp Prosecco sparkling wine, splash of soda, and a fresh orange slice.', pt: 'Aperol italiano, espumante Prosecco, água com gás e rodela de laranja fresca.' } },
+      { id: '27', cat: 'cocteles', price: 29000, pop: false, name: { es: 'Piña Colada Cremosa', en: 'Creamy Piña Colada', pt: 'Piña Colada Cremosa' }, desc: { es: 'Ron especiado, crema de coco natural espesa y jugo de piña dorada frappé.', en: 'Spiced rum blended with thick natural coconut cream and golden pineapple juice.', pt: 'Rum temperado com creme de coco natural e suco de abacaxi gelado.' } },
+      { id: '28', cat: 'cocteles', price: 31000, pop: false, name: { es: 'Moscow Mule con Jengibre', en: 'Fresh Ginger Moscow Mule', pt: 'Moscow Mule de Gengibre' }, desc: { es: 'Vodka destilado, cerveza de jengibre artesanal, limón exprimido en taza de cobre.', en: 'Premium vodka, spicy house ginger beer, freshly squeezed lime in a copper mug.', pt: 'Vodka destilada, cerveja artesanal de gengibre e limão na caneca de cobre.' } },
+      { id: '29', cat: 'cocteles', price: 25000, pop: false, name: { es: 'Sangría Tinta de la Casa (Copa)', en: 'House Red Sangria (Glass)', pt: 'Sangria Tinta da Casa (Taça)' }, desc: { es: 'Vino tinto joven macerado con manzanas, cítricos de la región y licor de naranja.', en: 'Red wine macerated with apples, local citrus fruits, triple sec liqueur, and cinnamon.', pt: 'Vinho tinto macerado com maçãs, frutas cítricas locais e licor de laranja.' } },
+      { id: '30', cat: 'cocteles', price: 24000, pop: false, name: { es: 'Cuba Libre Reserva Especial', en: 'Special Reserve Cuba Libre', pt: 'Cuba Libre Reserva Especial' }, desc: { es: 'Ron añejo colombiano 8 años, bebida de cola, gotas de amargo y rodaja de lima.', en: '8-year-old aged Colombian rum, classic cola, aromatic bitters dash, and fresh lime.', pt: 'Rum envelhecido 8 anos, refrigerante de cola, gotas de bitter e rodela de limão.' } },
+
+      // BEBIDAS & CAFE
+      { id: '31', cat: 'bebidas', price: 15000, pop: true, name: { es: 'Limonada de Coco Frappé', en: 'Creamy Coconut Limeade', pt: 'Limonada de Coco Cremosa' }, desc: { es: 'Zumo de limón recién exprimido licuado cremoso con leche de coco natural y hielo.', en: 'Freshly squeezed lime blended with pure rich coconut milk and crushed ice.', pt: 'Suco de limão batido de forma cremosa com leite de coco natural e gelo.' } },
+      { id: '32', cat: 'bebidas', price: 12000, pop: false, name: { es: 'Limonada de Hierbabuena', en: 'Mint Limeade', pt: 'Limonada com Hortelã' }, desc: { es: 'Bebida refrescante de limón criollo con hojas enteras de hierbabuena maceradas.', en: 'Refreshing lime drink made with crushed fresh garden mint leaves over ice.', pt: 'Bebida refrescante de limão com folhas frescas de hortelã maceradas.' } },
+      { id: '33', cat: 'bebidas', price: 10000, pop: false, name: { es: 'Jugo Natural de Maracuyá', en: 'Fresh Passion Fruit Juice', pt: 'Suco Natural de Maracujá' }, desc: { es: 'Pulpa 100% natural de maracuyá preparada en agua o en leche a elección.', en: '100% natural passion fruit pulp blended fresh with water or whole milk.', pt: 'Polpa 100% natural de maracujá batida com água ou leite à sua escolha.' } },
+      { id: '34', cat: 'bebidas', price: 11000, pop: false, name: { es: 'Jugo de Mora Andina', en: 'Andean Blackberry Juice', pt: 'Suco de Amora Andina' }, desc: { es: 'Moras silvestres del Quindío licuadas al instante en agua mineral o en leche cremosa.', en: 'Wild Andean blackberries from the local highlands blended fresh in water or milk.', pt: 'Amoras silvestres da região andina preparadas na hora com água ou leite.' } },
+      { id: '35', cat: 'bebidas', price: 10000, pop: false, name: { es: 'Jugo Natural de Mango Dulce', en: 'Sweet Mango Juice', pt: 'Suco Natural de Manga' }, desc: { es: 'Mango maduro seleccionado batido bien frío para un sabor tropical intenso.', en: 'Ripe tropical mango blended cold for a sweet and vibrant flavor.', pt: 'Manga madura selecionada e batida bem gelada com sabor tropical marcante.' } },
+      { id: '36', cat: 'bebidas', price: 7000, pop: true, name: { es: 'Espresso Origen Salento', en: 'Single Origin Salento Espresso', pt: 'Espresso Origem Salento' }, desc: { es: 'Extracción corta de café especial de altura cultivado en fincas de Salento.', en: 'Rich short extraction of specialty high-altitude coffee grown in Salento farms.', pt: 'Extração curta e intensa de café especial cultivado nas montanhas de Salento.' } },
+      { id: '37', cat: 'bebidas', price: 10000, pop: true, name: { es: 'Cappuccino Artesanal', en: 'Artisan Steamed Cappuccino', pt: 'Cappuccino Artesanal Cremoso' }, desc: { es: 'Doble shot de café especial con microespuma sedosa de leche y cacao puro.', en: 'Double shot of espresso balanced with silky steamed microfoam and cocoa.', pt: 'Dose dupla de café especial com microespuma de leite e cacau.' } },
+      { id: '38', cat: 'bebidas', price: 16000, pop: true, name: { es: 'Cerveza Artesanal del Quindío', en: 'Quindío Craft Beer (Bottle)', pt: 'Cerveja Artesanal de Quindío' }, desc: { es: 'Botella de cerveza artesanal local estilo IPA, Amber Ale o Rubia Dorada.', en: 'Local craft beer bottle available in IPA, Amber Ale, or crisp Golden Ale style.', pt: 'Garrafa de cerveja artesanal local nos estilos IPA, Amber Ale ou Blonde Ale.' } },
+      { id: '39', cat: 'bebidas', price: 10000, pop: false, name: { es: 'Cerveza Club Colombia', en: 'Club Colombia Premium Beer', pt: 'Cerveja Club Colombia Dorada' }, desc: { es: 'Cerveza lager tradicional colombiana servida en copa fría.', en: 'Traditional Colombian premium lager served chilled with frosted glass.', pt: 'Cerveja premium tradicional colombiana servida bem gelada.' } },
+      { id: '40', cat: 'bebidas', price: 7000, pop: false, name: { es: 'Agua Manantial / Con Gas', en: 'Bottled Spring / Sparkling Water', pt: 'Água Mineral / Com Gás' }, desc: { es: 'Agua pura de manantial andino, disponible sin gas o con gas y limón.', en: 'Pure Andean spring water, available still or sparkling with fresh lemon.', pt: 'Água pura da fonte andina, disponível com ou sem gás e rodela de limão.' } }
+    ];
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      
+      // Update Buttons
+      ['es', 'en', 'pt'].forEach(l => {
+        const btn = document.getElementById(`btn-${l}`);
+        if (l === lang) {
+          btn.className = 'px-2.5 py-1 rounded-full uppercase transition-all bg-[#A44A27] text-white shadow-sm';
+        } else {
+          btn.className = 'px-2.5 py-1 rounded-full uppercase transition-all text-[#6E5D57] hover:text-[#2B1E1A]';
+        }
+      });
+
+      const t = DICTIONARY[lang];
+
+      // Update Texts
+      document.getElementById('hero-badge').textContent = t.badge;
+      document.getElementById('hero-title').textContent = t.heroTitle;
+      document.getElementById('hero-subtitle').textContent = t.heroSubtitle;
+      document.getElementById('btn-view-menu').textContent = t.viewMenu;
+      document.getElementById('btn-how-to-get').textContent = t.howToGet;
+      document.getElementById('nav-reserve-btn').textContent = t.reserve;
+      document.getElementById('search-input').placeholder = t.searchPlaceholder;
+      document.getElementById('faq-title').textContent = t.faqTitle;
+      document.getElementById('footer-loc-title').textContent = t.locationTitle;
+      document.getElementById('footer-loc-address').textContent = t.locationText;
+      document.getElementById('footer-loc-hours').textContent = t.hours;
+      document.getElementById('footer-loc-link').textContent = t.openMap;
+
+      // Update Category Buttons Text
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        const catKey = btn.getAttribute('data-cat');
+        btn.textContent = t.categories[catKey];
+      });
+
+      // Update WhatsApp Links
+      const waUrl = `https://wa.me/573222858658?text=${encodeURIComponent(t.whatsappMsg)}`;
+      document.getElementById('nav-reserve-btn').href = waUrl;
+      document.getElementById('footer-whatsapp-btn').href = waUrl;
+      document.getElementById('floating-wa').href = waUrl;
+
+      // Render FAQs
+      renderFaqs();
+
+      // Re-render Menu
+      renderMenu();
+    }
+
+    function setCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        if (btn.getAttribute('data-cat') === cat) {
+          btn.className = 'cat-btn whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-medium transition-all bg-[#2B1E1A] text-white shadow-sm';
+        } else {
+          btn.className = 'cat-btn whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-medium transition-all bg-white text-[#6E5D57] hover:bg-[#FDF8F5] border border-[#F0E5DE]';
+        }
+      });
+      renderMenu();
+    }
+
+    function handleSearch(val) {
+      currentSearch = val.trim().toLowerCase();
+      renderMenu();
+    }
+
+    function renderFaqs() {
+      const t = DICTIONARY[currentLang];
+      const faqContainer = document.getElementById('faq-list');
+      faqContainer.innerHTML = t.faqs.map(faq => `
+        <div class="border border-[#F0E5DE] rounded-xl p-4 bg-[#FDF8F5]/40">
+          <h4 class="text-sm font-semibold text-[#2B1E1A] mb-1">${faq.q}</h4>
+          <p class="text-xs text-[#6E5D57] leading-relaxed font-light">${faq.a}</p>
+        </div>
+      `).join('');
+    }
+
+    function renderMenu() {
+      const grid = document.getElementById('menu-grid');
+      const filtered = MENU_ITEMS.filter(item => {
+        const matchCat = currentCategory === 'all' || item.cat === currentCategory;
+        const name = item.name[currentLang].toLowerCase();
+        const desc = item.desc[currentLang].toLowerCase();
+        const matchSearch = name.includes(currentSearch) || desc.includes(currentSearch);
+        return matchCat && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full text-center py-12">
+            <p class="text-sm text-[#6E5D57]">No se encontraron platos para esta búsqueda.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => `
+        <div class="bg-white rounded-2xl border border-[#F0E5DE] overflow-hidden hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-baseline gap-2 mb-2">
+                <h3 class="font-serif text-lg text-[#2B1E1A] font-medium leading-snug">
+                  ${item.name[currentLang]}
+                </h3>
+                <span class="text-sm font-bold text-[#A44A27] whitespace-nowrap">
+                  $${item.price.toLocaleString('es-CO')}
+                </span>
+              </div>
+              <p class="text-xs text-[#6E5D57] leading-relaxed font-light">
+                ${item.desc[currentLang]}
+              </p>
+            </div>
+            ${item.pop ? `
+              <div class="mt-4">
+                <span class="inline-block bg-[#A44A27]/10 text-[#A44A27] text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full">
+                  Popular
+                </span>
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Initialize
+    setLanguage('es');
+  </script>
+</body>
+</html>
