@@ -180,10 +180,12 @@
     justify-content:center;
     align-items:center;
   }
+  
+  /* MARCO DE LA FOTO AJUSTADO EXACTAMENTE A PROPORCIÓN 1080x1350 (Ratio 4:5) */
   .hero-image-frame{
     width:100%;
-    max-width:420px;
-    aspect-ratio:4/5;
+    max-width:400px;
+    aspect-ratio: 1080 / 1350;
     border-radius:30px;
     overflow:hidden;
     border:2px solid rgba(236, 72, 153, 0.4);
@@ -194,7 +196,8 @@
   .hero-image-frame img{
     width:100%;
     height:100%;
-    object-fit:cover;
+    object-fit: cover;
+    object-position: center top;
   }
   
   .reel-badge {
@@ -213,6 +216,7 @@
     font-size: 0.85rem;
     font-weight: 700;
     box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    z-index: 2;
   }
   .reel-badge i { color: var(--pink-vibrant); animation: pulse 1.5s infinite; }
   @keyframes pulse { 50% { opacity: 0.4; } }
@@ -427,7 +431,7 @@
   .faq-answer-inner { padding: 0 24px 22px; font-size: 0.95rem; color: var(--text-muted); }
   .faq-item.active .faq-answer { max-height: 300px; }
 
-  /* ============== CAROUSEL PREMIUM DE TRABAJOS (8 CARDS FLUIDOS) ============== */
+  /* ============== CAROUSEL PREMIUM DE TRABAJOS ============== */
   .carousel-section{
     background:rgba(21, 16, 31, 0.4);
     border-top:1px solid rgba(236, 72, 153, 0.15);
@@ -735,7 +739,7 @@
   </div>
 </section>
 
-<!-- ============== CAROUSEL PREMIUM DE TRAYECTORIA (8 CARDS AMPLIADOS) ============== -->
+<!-- ============== CAROUSEL PREMIUM DE TRAYECTORIA ============== -->
 <section class="carousel-section" id="experiencia">
   <div class="container" style="margin-bottom:30px">
     <div class="section-header" style="margin-bottom:30px">
