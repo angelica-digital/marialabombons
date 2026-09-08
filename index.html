@@ -427,44 +427,45 @@
   .faq-answer-inner { padding: 0 24px 22px; font-size: 0.95rem; color: var(--text-muted); }
   .faq-item.active .faq-answer { max-height: 300px; }
 
-  /* ============== CARROUSEL PREMIUM DE TRABAJOS (CORREGIDO CORTE INFERIOR) ============== */
+  /* ============== CARROUSEL PREMIUM DE TRABAJOS (CORRECCIÓN DE CORTE INFERIOR) ============== */
   .carousel-section{
     background:rgba(21, 16, 31, 0.4);
     border-top:1px solid rgba(236, 72, 153, 0.15);
     border-bottom:1px solid rgba(236, 72, 153, 0.15);
+    padding: 90px 0;
   }
   .carousel-container{
-    position:relative;
-    width:100%;
-    /* Añadimos padding vertical holgado para que la sombra inferior respire y no sea cortada por la caja */
-    padding: 20px 0 40px 0;
+    position: relative;
+    width: 100%;
   }
   .carousel-track{
-    display:flex;
-    gap:24px;
-    overflow-x:auto;
-    scroll-snap-type:x mandatory;
-    scroll-behavior:smooth;
-    padding: 10px 15px; /* Margen interno para que la sombra del hover no choque contra los bordes del scroll */
-    scrollbar-width:none;
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    /* Espacio superior e inferior generoso (45px abajo) para que la sombra en hover no tope con ningún corte */
+    padding: 15px 15px 45px 15px;
+    scrollbar-width: none;
   }
   .carousel-track::-webkit-scrollbar{display:none}
   .carousel-item{
-    flex:0 0 320px;
-    scroll-snap-align:start;
-    background:var(--bg-card);
-    border:1px solid rgba(168, 85, 247, 0.2);
-    border-radius:20px;
-    padding:24px;
-    display:flex;
-    flex-direction:column;
-    gap:16px;
-    transition:all .3s ease;
+    flex: 0 0 320px;
+    scroll-snap-align: start;
+    background: var(--bg-card);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   }
   .carousel-item:hover{
-    border-color:var(--pink-vibrant);
-    transform:translateY(-6px);
-    box-shadow: 0 20px 40px rgba(236, 72, 153, 0.3); /* Sombra difusa redonda perfecta en todos los lados */
+    border-color: var(--pink-vibrant);
+    transform: translateY(-6px);
+    /* Sombra equilibrada y redonda sin cortes rectos abajo */
+    box-shadow: 0 16px 40px rgba(236, 72, 153, 0.35);
   }
   .work-tag{
     display:inline-block;
@@ -890,7 +891,7 @@
 <!-- ============== WHATSAPP FLOTANTE ============== -->
 <a href="https://wa.me/573204869934?text=Hola%20La%20Bombons,%20quiero%20contratar%20tus%20servicios" target="_blank" rel="noopener" class="float-wa" aria-label="WhatsApp">
   <i class="fa-brands fa-whatsapp"></i>
-</a>
+</a >
 
 <!-- ============== SCRIPTS ============== -->
 <script>
