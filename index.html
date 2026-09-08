@@ -181,7 +181,6 @@
     align-items:center;
   }
   
-  /* MARCO DE LA FOTO EN PROPORCIÓN 1080x1350 (Ratio 4:5) */
   .hero-image-frame{
     width:100%;
     max-width:400px;
@@ -514,26 +513,31 @@
   }
   .agency-credit span{color:var(--pink-vibrant);font-weight:700}
 
-  /* ============== FLOATING WHATSAPP ============== */
+  /* ============== WHATSAPP FLOTANTE (ESTILO VIBRANTE Y LILA) ============== */
   .float-wa{
     position:fixed;
     bottom:24px;right:24px;
     width:64px;height:64px;
-    background:linear-gradient(135deg,#10B981,#059669);
+    background: linear-gradient(135deg, #EC4899, #A855F7, #F59E0B);
+    background-size: 200% auto;
     border-radius:50%;
     display:grid;place-items:center;
     color:#fff;
     font-size:2rem;
-    box-shadow:0 10px 30px rgba(16,185,129,0.5);
+    box-shadow:0 10px 30px rgba(236, 72, 153, 0.5);
     z-index:999;
-    transition:all .3s ease;
-    animation:pulseWA 2s infinite;
+    transition:all .4s ease;
+    animation: pulseWA 2.5s infinite;
   }
-  .float-wa:hover{transform:scale(1.1) rotate(6deg)}
+  .float-wa:hover{
+    transform:scale(1.1) rotate(6deg);
+    background-position: right center;
+    box-shadow:0 15px 40px rgba(168, 85, 247, 0.7);
+  }
   @keyframes pulseWA{
-    0%{box-shadow:0 10px 30px rgba(16,185,129,0.5),0 0 0 0 rgba(16,185,129,0.7)}
-    70%{box-shadow:0 10px 30px rgba(16,185,129,0.5),0 0 0 20px rgba(16,185,129,0)}
-    100%{box-shadow:0 10px 30px rgba(16,185,129,0.5),0 0 0 0 rgba(16,185,129,0)}
+    0%{box-shadow:0 10px 30px rgba(236, 72, 153, 0.4), 0 0 0 0 rgba(168, 85, 247, 0.6)}
+    70%{box-shadow:0 10px 30px rgba(236, 72, 153, 0.4), 0 0 0 20px rgba(236, 72, 153, 0)}
+    100%{box-shadow:0 10px 30px rgba(236, 72, 153, 0.4), 0 0 0 0 rgba(236, 72, 153, 0)}
   }
 
   /* ============== RESPONSIVO MÓVIL Y COMPUTADORA ============== */
@@ -617,7 +621,6 @@
       </div>
       <div class="hero-image-box">
         <div class="hero-image-frame">
-          <!-- FOTO ACTUALIZADA A FOTOLABOMBONS.PNG -->
           <img src="fotolabombons.png" alt="María Angélica - La Bombons" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80'">
           <div class="reel-badge">
             <i class="fa-solid fa-play"></i>
