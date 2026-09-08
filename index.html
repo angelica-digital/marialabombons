@@ -58,8 +58,8 @@
     position:fixed;
     top:0;left:0;right:0;
     z-index:1000;
-    padding:14px 0;
-    background:rgba(11, 7, 16, 0.85);
+    padding:10px 0;
+    background:rgba(11, 7, 16, 0.9);
     backdrop-filter:blur(20px);
     border-bottom:1px solid rgba(236, 72, 153, 0.2);
     transition:all .3s ease;
@@ -70,8 +70,9 @@
     align-items:center;
     gap:20px;
   }
+  /* LOGO ADAPTABLE (Grande en PC, compacta y limpia en móvil) */
   .logo-img {
-    height: 110px;
+    height: 100px;
     width: auto;
     object-fit: contain;
     transition: transform 0.3s ease;
@@ -129,7 +130,7 @@
 
   /* ============== HERO ============== */
   .hero{
-    padding:200px 0 80px;
+    padding:180px 0 80px;
     position:relative;
   }
   .hero-grid{
@@ -270,7 +271,7 @@
     margin-bottom:16px;
   }
 
-  /* ============== MEDIA KIT (PAQUETES - CORRECCIÓN DE ESPACIADO) ============== */
+  /* ============== MEDIA KIT (PAQUETES) ============== */
   .packages-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(310px, 1fr));
@@ -280,7 +281,6 @@
     background:linear-gradient(160deg, rgba(21, 16, 31, 0.95), rgba(11, 7, 16, 0.9));
     border:1px solid rgba(236, 72, 153, 0.25);
     border-radius:24px;
-    /* Padding superior aumentado a 50px para dar espacio libre al badge "MÁS POPULAR" y evitar que tape el título */
     padding: 50px 32px 40px 32px;
     display:flex;
     flex-direction:column;
@@ -536,7 +536,7 @@
 
   /* ============== RESPONSIVO OPTIMIZADO (MÓVIL Y PC) ============== */
   @media (max-width: 900px){
-    .hero{padding: 140px 0 60px;}
+    .hero{padding: 130px 0 60px;} /* Reducido para celular para que no quede espacio muerto */
     .hero-grid{grid-template-columns:1fr;gap:40px;text-align:center}
     .hero-buttons{justify-content:center}
     .hero p.lead{margin-inline:auto}
@@ -545,6 +545,13 @@
   }
 
   @media (max-width: 768px){
+    /* Logo compacta y estilizada en móvil para que no choque con el menú */
+    .logo-img {
+      height: 55px; 
+    }
+    .header {
+      padding: 8px 0;
+    }
     .menu{
       position:fixed;
       top:0;right:-100%;
@@ -563,7 +570,6 @@
     .hamburger{display:block;z-index:1001}
     .header-cta{display:none}
     
-    /* Ajustes para móviles pequeños */
     .hero h1 { font-size: 2.2rem; }
     .section-header h2 { font-size: 1.8rem; }
     .package-card { padding: 45px 20px 30px 20px; }
@@ -670,7 +676,7 @@
         </a>
       </article>
 
-      <!-- PAQUETE 2 (DESTACADO CON ESPACIO CORREGIDO PARA EL BADGE) -->
+      <!-- PAQUETE 2 (DESTACADO) -->
       <article class="package-card featured">
         <span class="package-badge">Más Popular</span>
         <h3 class="package-title">Paquete 2: Publicación en el Feed</h3>
