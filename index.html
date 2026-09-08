@@ -58,7 +58,7 @@
     position:fixed;
     top:0;left:0;right:0;
     z-index:1000;
-    padding:12px 0;
+    padding:14px 0;
     background:rgba(11, 7, 16, 0.85);
     backdrop-filter:blur(20px);
     border-bottom:1px solid rgba(236, 72, 153, 0.2);
@@ -70,11 +70,15 @@
     align-items:center;
     gap:20px;
   }
-  /* Estilo para la Logo en el Header */
+  /* LOGO AMPLIADA Y DESTACADA */
   .logo-img {
-    height: 48px;
+    height: 85px;
     width: auto;
     object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+  .logo-img:hover {
+    transform: scale(1.03);
   }
 
   .menu{display:flex;gap:32px;align-items:center}
@@ -126,7 +130,7 @@
 
   /* ============== HERO ============== */
   .hero{
-    padding:160px 0 80px;
+    padding:180px 0 80px;
     position:relative;
   }
   .hero-grid{
@@ -423,7 +427,7 @@
   .faq-answer-inner { padding: 0 24px 22px; font-size: 0.95rem; color: var(--text-muted); }
   .faq-item.active .faq-answer { max-height: 300px; }
 
-  /* ============== CARROUSEL PREMIUM DE TRABAJOS (EFECTO GLOW INTERNO SIN CORTES) ============== */
+  /* ============== CARROUSEL PREMIUM DE TRABAJOS ============== */
   .carousel-section{
     background:rgba(21, 16, 31, 0.4);
     border-top:1px solid rgba(236, 72, 153, 0.15);
@@ -456,7 +460,6 @@
     gap: 16px;
     transition: all 0.3s ease;
   }
-  /* En lugar de sombras externas que chocan con el scroll, usamos un borde brillante y un zoom elegante */
   .carousel-item:hover{
     border-color: var(--pink-vibrant);
     transform: translateY(-6px);
@@ -492,7 +495,7 @@
     text-align:center;
   }
   .footer-logo {
-    height: 55px;
+    height: 70px;
     width: auto;
     object-fit: contain;
     margin: 0 auto 16px auto;
@@ -563,7 +566,7 @@
 <header class="header" id="header">
   <div class="container">
     <nav class="nav">
-      <!-- LOGO SUSTITUIDA EN EL HEADER -->
+      <!-- LOGO AMPLIADA EN EL HEADER -->
       <a href="#" class="logo-link">
         <img src="logomarialabombons.png" alt="La Bombons" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
         <span class="logo" style="display:none;">La Bombons</span>
@@ -872,9 +875,7 @@
 <!-- ============== FOOTER ============== -->
 <footer class="footer">
   <div class="container">
-    <!-- LOGO SUSTITUIDA EN EL FOOTER -->
-    <img src="logomarialabombons.png" alt="La Bombons" class="footer-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
-    <span class="footer-logo" style="display:none;">La Bombons</span>
+    <span class="footer-logo">La Bombons</span>
     <p>Creadora de contenido, locutora y figura pública líder en el Quindío.</p>
     <div style="display:flex;justify-content:center;gap:16px;margin-bottom:24px">
       <a href="https://instagram.com/marialabombons" target="_blank" style="color:#fff;font-size:1.2rem"><i class="fa-brands fa-instagram"></i></a>
