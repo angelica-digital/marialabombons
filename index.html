@@ -70,9 +70,9 @@
     align-items:center;
     gap:20px;
   }
-  /* LOGO AMPLIADA Y DESTACADA */
+  /* LOGO AMPLIADA A 110px EN EL HEADER */
   .logo-img {
-    height: 85px;
+    height: 110px;
     width: auto;
     object-fit: contain;
     transition: transform 0.3s ease;
@@ -130,7 +130,7 @@
 
   /* ============== HERO ============== */
   .hero{
-    padding:180px 0 80px;
+    padding:200px 0 80px;
     position:relative;
   }
   .hero-grid{
@@ -494,8 +494,9 @@
     padding:60px 0 30px;
     text-align:center;
   }
+  /* LOGO RESTAURADA Y AMPLIADA EN EL FOOTER */
   .footer-logo {
-    height: 70px;
+    height: 90px;
     width: auto;
     object-fit: contain;
     margin: 0 auto 16px auto;
@@ -875,7 +876,9 @@
 <!-- ============== FOOTER ============== -->
 <footer class="footer">
   <div class="container">
-    <span class="footer-logo">La Bombons</span>
+    <!-- LOGO RESTAURADA Y AMPLIADA EN EL FOOTER -->
+    <img src="logomarialabombons.png" alt="La Bombons" class="footer-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+    <span class="footer-logo" style="display:none;">La Bombons</span>
     <p>Creadora de contenido, locutora y figura pública líder en el Quindío.</p>
     <div style="display:flex;justify-content:center;gap:16px;margin-bottom:24px">
       <a href="https://instagram.com/marialabombons" target="_blank" style="color:#fff;font-size:1.2rem"><i class="fa-brands fa-instagram"></i></a>
