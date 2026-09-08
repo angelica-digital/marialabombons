@@ -12,7 +12,7 @@
 <style>
   /* ============== RESET & BASE ============== */
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  html{scroll-behavior:smooth;scroll-padding-top:40px}
   
   :root {
     --bg-main: #0B0710;
@@ -53,16 +53,14 @@
   ul{list-style:none}
   .container{width:min(1280px,92%);margin-inline:auto}
 
-  /* ============== HEADER ============== */
+  /* ============== HEADER (YA NO ESTÁ FIJO) ============== */
   .header{
-    position:fixed;
+    position:absolute;
     top:0;left:0;right:0;
     z-index:1000;
-    padding:14px 0;
-    background:rgba(11, 7, 16, 0.85);
-    backdrop-filter:blur(20px);
-    border-bottom:1px solid rgba(236, 72, 153, 0.2);
-    transition:all .3s ease;
+    padding:20px 0;
+    background:transparent;
+    border-bottom:1px solid rgba(236, 72, 153, 0.15);
   }
   .nav{
     display:flex;
@@ -70,8 +68,9 @@
     align-items:center;
     gap:20px;
   }
+  /* LOGO ADAPTABLE */
   .logo-img {
-    height: 100px;
+    height: 95px;
     width: auto;
     object-fit: contain;
     transition: transform 0.3s ease;
@@ -129,7 +128,7 @@
 
   /* ============== HERO ============== */
   .hero{
-    padding:180px 0 80px;
+    padding:160px 0 80px;
     position:relative;
   }
   .hero-grid{
@@ -270,7 +269,7 @@
     margin-bottom:16px;
   }
 
-  /* ============== MEDIA KIT (PAQUETES - RESPONSIVE ROBUSTO) ============== */
+  /* ============== MEDIA KIT (PAQUETES) ============== */
   .packages-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(310px, 1fr));
@@ -280,7 +279,6 @@
     background:linear-gradient(160deg, rgba(21, 16, 31, 0.95), rgba(11, 7, 16, 0.9));
     border:1px solid rgba(236, 72, 153, 0.25);
     border-radius:24px;
-    /* Padding superior generoso de 60px para que el badge "MÁS POPULAR" nunca toque el título en ningún dispositivo */
     padding: 60px 28px 36px 28px;
     display:flex;
     flex-direction:column;
@@ -537,7 +535,7 @@
 
   /* ============== RESPONSIVO MÓVIL Y COMPUTADORA ============== */
   @media (max-width: 900px){
-    .hero{padding: 130px 0 60px;}
+    .hero{padding: 120px 0 60px;}
     .hero-grid{grid-template-columns:1fr;gap:40px;text-align:center}
     .hero-buttons{justify-content:center}
     .hero p.lead{margin-inline:auto}
@@ -546,8 +544,9 @@
   }
 
   @media (max-width: 768px){
+    /* Logo compacta y perfectamente proporcionada en celular */
     .logo-img { height: 50px; }
-    .header { padding: 8px 0; }
+    .header { padding: 12px 0; }
     .menu{
       position:fixed;
       top:0;right:-100%;
@@ -568,8 +567,6 @@
     
     .hero h1 { font-size: 2.1rem; }
     .section-header h2 { font-size: 1.7rem; }
-    
-    /* Asegurar espacio perfecto en móvil para las tarjetas */
     .package-card { padding: 65px 20px 30px 20px; }
     .package-badge { top: 18px; right: 18px; }
   }
@@ -577,7 +574,7 @@
 </head>
 <body>
 
-<!-- ============== HEADER ============== -->
+<!-- ============== HEADER (ESTÁTICO / NO FIJO) ============== -->
 <header class="header" id="header">
   <div class="container">
     <nav class="nav">
@@ -675,7 +672,7 @@
         </a>
       </article>
 
-      <!-- PAQUETE 2 (DESTACADO CON ESPACIO MÓVIL CORREGIDO) -->
+      <!-- PAQUETE 2 (DESTACADO) -->
       <article class="package-card featured">
         <span class="package-badge">Más Popular</span>
         <h3 class="package-title">Paquete 2: Publicación en el Feed</h3>
